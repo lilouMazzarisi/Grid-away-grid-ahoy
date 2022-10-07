@@ -1,0 +1,144 @@
+:root {
+    --bkg-cl: #e6eff6;
+    --card-cl: #ffffff;
+    --h2-cl: #868c9a;
+    --button-cl: #40a7f4;
+    --shadow-cl: #b8c9d9;
+    --txt-cl: #b2b5c0;
+    --button-txt: #ffffff;
+
+
+    --h2-sz: 20px;
+    --txt-sz: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bkg-cl);
+    max-width: fit-content;
+
+    display: grid;
+}
+
+nav {
+    background-color: var(--card-cl);
+    width: 200px;
+
+    padding: 20px;
+    text-align: right;
+
+    font-family: 'Roboto', sans-serif;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--txt-cl);
+    font-size: var(--txt-sz);
+}
+
+.card_container {
+    display: grid;
+    grid-template-columns: repeat(4, 250px);
+    grid-gap: 30px;
+    grid-column-start: 2;
+
+    margin: 20px;
+}
+
+.card {
+    height: 400px;
+    border-radius: 10px;
+
+    background-color: var(--card-cl);
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+
+    padding: 20px;
+
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+
+    box-shadow: 1px 1px 41px var(--bkg-cl);
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--bkg-cl);
+}
+
+h2 {
+    color: var(--h2-cl);
+    font-size: var(--h2-sz);
+    font-weight: 400;
+}
+
+p {
+    color: var(--txt-cl);
+    font-size: var(--txt-sz);
+    position: relative;
+    z-index: 1;
+    font-weight: 300;
+}
+
+p::after {
+    content: "";
+    position: absolute;
+    position: absolute;
+    left: 35%;
+    bottom: -15%;
+    height: 0px;
+    width: 30%;
+    border-bottom: 1px solid var(--txt-cl);
+}
+
+
+
+.card:hover {
+    box-shadow: 0px 5px 7px var(--shadow-cl);
+}
+
+.card:hover>a {
+    border-radius: 30px;
+    background-color: var(--button-cl);
+    color: var(--button-txt);
+
+    box-shadow: 0px 5px 7px var(--shadow-cl);
+
+    padding: 10px;
+    width: 120px;
+
+    cursor: pointer;
+}
+
+.card:hover>p::after {
+    border: none;
+}
+
+@media screen and (max-width: 768px) {
+
+    .card_container {
+        grid-template-columns: repeat(2, 250px);
+    }
+}
+
+@media screen and (max-width: 425px) {
+
+    .card_container {
+        grid-template-columns: repeat(1, 250px);
+    }
+}
