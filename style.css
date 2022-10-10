@@ -6,7 +6,7 @@
     --shadow-cl: #b8c9d9;
     --txt-cl: #b2b5c0;
     --button-txt: #ffffff;
-
+    --dark-bkg: #303132;
 
     --h2-sz: 20px;
     --txt-sz: 12px;
@@ -20,13 +20,12 @@
 
 body {
     background-color: var(--bkg-cl);
-    max-width: fit-content;
 
     display: grid;
 }
 
 nav {
-    background-color: var(--card-cl);
+    background-color: var(--dark-bkg);
     width: 200px;
 
     padding: 20px;
@@ -35,8 +34,13 @@ nav {
     font-family: 'Roboto', sans-serif;
 }
 
+ul {
+    padding: inherit;
+}
+
 li {
     list-style: none;
+    line-height: 40px;
 }
 
 a {
@@ -44,6 +48,21 @@ a {
     text-transform: uppercase;
     color: var(--txt-cl);
     font-size: var(--txt-sz);
+}
+
+li>a {
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.nav__item>a:hover {
+    color: var(--shadow-cl);
+}
+
+
+.hamburger img,
+.close img {
+    display: none;
 }
 
 .card_container {
@@ -140,5 +159,61 @@ p::after {
 
     .card_container {
         grid-template-columns: repeat(1, 250px);
+    }
+
+    nav {
+        background-color: var(--bkg-cl);
+        width: 50px;
+    }
+
+    .hamburger,
+    .close {
+        border: none;
+        cursor: pointer;
+        /* position absolute position the icons relative to the body because they have no position relative parents*/
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .close {
+        background: var(--dark-bkg);
+    }
+
+    .hamburger img,
+    .close img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .navbar {
+        position: absolute;
+        /* a higher z-index put navbar above hamburger */
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        /* basic menu styling*/
+        list-style: none;
+        background: var(--dark-bkg);
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-evenly;
+        align-items: center;
+        /* animate slide up/down */
+        transform: translateY(-100%);
+        transition: transform 0.2s ease;
+    }
+
+    /* :target is called when its anchor id #navbar is called by clicking on the hamburger which has href="#navbar" */
+
+    .navbar:target {
+        /* show navbar */
+        transform: translateY(0);
     }
 }
